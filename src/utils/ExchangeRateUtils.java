@@ -1,9 +1,21 @@
 package utils;
 
+import model.SupportedCodesResponse;
+import java.util.List;
 import java.util.Map;
 
-public class Flags {
+/**
+ * ExchangeRateUtils contiene utilidades relacionadas con las tasas de cambio,
+ * en particular para mostrar códigos de monedas junto con su respectiva bandera.
+ */
+public class ExchangeRateUtils {
 
+    /**
+     * Mapa de códigos de moneda a sus banderas emoji correspondientes.
+     * - Map.ofEntries nos permite crear un mapa inmutable de manera clara.
+     * - Cada entrada es un par <CÓDIGO_MONEDA, BANDERA_EMOJI>.
+     * - Ejemplo: "USD" → "🇺🇸", "ARS" → "🇦🇷"
+     */
     public static final Map<String, String> FLAGS = Map.ofEntries(
             Map.entry("AED", "🇦🇪"),
             Map.entry("AFN", "🇦🇫"),
@@ -162,7 +174,6 @@ public class Flags {
             Map.entry("WST", "🇼🇸"),
             Map.entry("XAF", "🇨🇫"),
             Map.entry("XCD", "🇦🇬"),
-            Map.entry("XDR", "💱"),
             Map.entry("XOF", "🇧🇯"),
             Map.entry("XPF", "🇵🇫"),
             Map.entry("YER", "🇾🇪"),
@@ -170,4 +181,32 @@ public class Flags {
             Map.entry("ZMW", "🇿🇲"),
             Map.entry("ZWL", "🇿🇼")
     );
+
+    /**
+     * Muestra en consola los códigos de moneda soportados junto con sus banderas.
+     * @param response Objeto con la lista de códigos soportados, obtenido de la API
+     */
+    public static void mostrarCodigosConBanderas(SupportedCodesResponse response) {
+
+        // Mensaje informativo inicial
+        System.out.print("| ");
+        System.out.println(ConsoleUtils.format("ℹ️ Obteniendo códigos de monedas...", ConsoleUtils.BLUE, ConsoleUtils.BOLD, ""));
+        System.out.println("| Códigos soportados:");
+        System.out.println("|----------------------------------------------------------------|");
+        System.out.println("| Flag CODE - Country");
+
+        // Obtener la lista de códigos de monedas de la respuesta
+        List<List<String>> codes = response.supported_codes();
+
+        // Recorrer cada par <código, nombre de moneda>
+        for (List<String> codePair : codes) {
+            String code = codePair.get(0);   // código de la moneda
+            String name = codePair.get(1);   // nombre del país/moneda
+            String bandera = FLAGS.getOrDefault(code, "🏳️");
+            // Si no tenemos bandera para esa moneda, mostramos una bandera blanca como placeholder
+
+            // Imprimir cada moneda con su bandera y nombre
+            System.out.printf("| %s %s - %s%n", bandera, code, name);
+        }
+    }
 }
