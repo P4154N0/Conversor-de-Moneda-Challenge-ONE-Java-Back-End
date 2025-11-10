@@ -12,10 +12,8 @@ import java.util.List;
  *  - equals, hashCode y toString
  */
 public record SupportedCodesResponse(
-        String result,                     // Resultado de la consulta (por ejemplo "success")
-        String documentation,              // URL o referencia a la documentación de la API
-        String terms_of_use,               // URL o texto con los términos de uso de la API
-        List<List<String>> supported_codes // Lista de listas, cada sublista contiene:
-        // [0] = código de moneda (por ejemplo "USD")
-        // [1] = nombre de la moneda (por ejemplo "United States Dollar")
+        String result,
+        String documentation,
+        String terms_of_use,
+        List<List<String>> supported_codes
 ) {}

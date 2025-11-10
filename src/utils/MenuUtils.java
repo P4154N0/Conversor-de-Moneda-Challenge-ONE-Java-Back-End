@@ -7,21 +7,15 @@ package utils;
  */
 public class MenuUtils {
 
-    // ================================
-    //  ICONOS USADOS EN EL MENÚ
-    // ================================
-    public static final String ICONO_PC = "💻";             // Ícono de computadora
-    public static final String ICONO_BANDERA_AR = "🇦🇷";    // Bandera de Argentina
-    public static final String ICONO_MATE = "🧉";           // Mate (bebida típica)
-    public static final String ICONO_ESTADISTICA = "📊";    // Estadísticas / conversiones rápidas
-    public static final String ICONO_CODIGOS = "💱";        // Códigos de monedas
-    public static final String ICONO_CONVERSION = "🧮";     // Conversiones personalizadas
-    public static final String ICONO_SALIENDO = "👋";       // Salir del programa
-    public static final String ICONO_ERROR = "❌";          // Mensaje de error
+    public static final String ICONO_PC = "💻";
+    public static final String ICONO_BANDERA_AR = "🇦🇷";
+    public static final String ICONO_MATE = "🧉";
+    public static final String ICONO_ESTADISTICA = "📊";
+    public static final String ICONO_CODIGOS = "💱";
+    public static final String ICONO_CONVERSION = "🧮";
+    public static final String ICONO_SALIENDO = "👋";
+    public static final String ICONO_ERROR = "❌";
 
-    // ================================
-    //  MENÚ PRINCIPAL
-    // ================================
     /**
      * Muestra el encabezado principal del programa con líneas divisorias
      * y llamada a la información del desarrollador.
@@ -32,12 +26,9 @@ public class MenuUtils {
         System.out.print(ConsoleUtils.format("                Conversor de Monedas Alura-ONE                  ", ConsoleUtils.GREEN, ConsoleUtils.BOLD, ""));
         System.out.println("| ");
         showDoubleLine();
-        showDeveloper();  // Muestra quién desarrolló el programa
+        showDeveloper();
     }
 
-    // ================================
-    //  INFORMACIÓN DEL DESARROLLADOR
-    // ================================
     public static void showDeveloper() {
         System.out.println("|         Developed " + ICONO_PC +
                 " by a P4154N0 from " + ICONO_BANDERA_AR +
@@ -45,16 +36,12 @@ public class MenuUtils {
         showDoubleLine();
     }
 
-    // ================================
-    //  OPCIONES DEL MENÚ PRINCIPAL
-    // ================================
     /**
      * Muestra las opciones principales del menú, con colores y estilos en consola.
      * Se imprimen 4 opciones: conversiones rápidas, códigos de monedas, conversión personalizada y salir.
      */
     public static void showOptionsMainMenu() {
 
-        // Cada opción se imprime con un color y estilo distinto usando ConsoleUtils
         System.out.print("| ");
         System.out.println(ConsoleUtils.format(
                 ICONO_ESTADISTICA + " 1 - Muestra rápida de 6 conversiones",
@@ -75,13 +62,9 @@ public class MenuUtils {
                 ICONO_SALIENDO + " 4 - Salir",
                 ConsoleUtils.RED, ConsoleUtils.BOLD, ""));
 
-        // Línea divisoria final
         showDoubleLine();
     }
 
-    // ================================
-    //  LÍNEAS DIVISORIAS
-    // ================================
     /**
      * Muestra una línea doble para dividir secciones del menú.
      */
@@ -95,5 +78,4 @@ public class MenuUtils {
     public static void showSingleLine() {
         System.out.println("|----------------------------------------------------------------|");
     }
-
 }

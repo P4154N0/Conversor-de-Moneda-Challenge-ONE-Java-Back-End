@@ -46,22 +46,4 @@ public class ConsoleUtils {
     public static String format(String text, String color, String style, String background) {
         return style + color + background + text + RESET;
     }
-
-    // -------------------- COMENTARIOS EXPLICATIVOS --------------------
-    // Los códigos ANSI funcionan así:
-    // \u001B → caracter de escape
-    // [<código>m → indica el color o estilo
-    //
-    // COLORES BÁSICOS:
-    // Negro 30, Rojo 31, Verde 32, Amarillo 33, Azul 34, Magenta 35, Cyan 36, Blanco 37
-    //
-    // FONDOS BÁSICOS:
-    // Negro 40, Rojo 41, Verde 42, Amarillo 43, Azul 44, Magenta 45, Cyan 46, Blanco 47
-    //
-    // ESTILOS:
-    // Normal 0, Negrita 1, Subrayado 4
-    //
-    // NOTA:
-    // Siempre que termines un texto con RESET (\u001B[0m) aseguras que el
-    // texto siguiente en la consola no herede los estilos anteriores.
 }

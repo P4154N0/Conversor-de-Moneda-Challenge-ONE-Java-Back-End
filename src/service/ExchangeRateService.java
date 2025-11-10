@@ -17,10 +17,8 @@ import java.net.http.HttpResponse;
  */
 public class ExchangeRateService {
 
-    // 🔑 Clave de la API (cada usuario debería usar su propia API Key)
-    private static final String API_KEY = "00afafd404fdfa4f00ed432b";
+    private static final String API_KEY = "your_api_key";
 
-    // URL base de la API
     private static final String BASE_URL = "https://v6.exchangerate-api.com/v6/";
 
     /**
@@ -32,30 +30,23 @@ public class ExchangeRateService {
      */
     public ExchangeRateResponse getExchangeRate(String base, String target) {
 
-        // Construye la URL final, por ejemplo:
-        // https://v6.exchangerate-api.com/v6/API_KEY/pair/USD/ARS
         String urlStr = BASE_URL + API_KEY + "/pair/" + base + "/" + target;
         URI uri = URI.create(urlStr);
 
-        // Crear un cliente HTTP para enviar la solicitud
         HttpClient client = HttpClient.newHttpClient();
 
-        // Crear una solicitud GET
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
                 .build();
 
-        // Intentar enviar la solicitud y convertir la respuesta JSON a un objeto Java
         try {
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            // Convertir el JSON a ExchangeRateResponse usando Gson
             return new Gson().fromJson(response.body(), ExchangeRateResponse.class);
 
         } catch (Exception e) {
-            // Si algo falla, lanzar RuntimeException con mensaje de error
             throw new RuntimeException("| No se pudo obtener la conversión.\nError: " + e.getMessage());
         }
     }
@@ -67,21 +58,16 @@ public class ExchangeRateService {
      */
     public SupportedCodesResponse getSupportedCodes() {
 
-        // Construye la URL para obtener los códigos:
-        // https://v6.exchangerate-api.com/v6/API_KEY/codes
         String urlStr = BASE_URL + API_KEY + "/codes";
         URI uri = URI.create(urlStr);
 
-        // Crear cliente HTTP
         HttpClient client = HttpClient.newHttpClient();
 
-        // Crear solicitud GET
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
                 .build();
 
-        // Enviar solicitud y convertir respuesta JSON a objeto Java
         try {
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -89,7 +75,6 @@ public class ExchangeRateService {
             return new Gson().fromJson(response.body(), SupportedCodesResponse.class);
 
         } catch (Exception e) {
-            // Si falla, lanzar excepción con mensaje
             throw new RuntimeException("| No se pudieron obtener los códigos de moneda.\nError: " + e.getMessage());
         }
     }

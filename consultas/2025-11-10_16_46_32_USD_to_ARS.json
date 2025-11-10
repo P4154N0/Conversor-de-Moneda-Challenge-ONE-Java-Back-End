@@ -1,0 +1,12 @@
+{
+  "result": "success",
+  "documentation": "https://www.exchangerate-api.com/docs",
+  "terms_of_use": "https://www.exchangerate-api.com/terms",
+  "time_last_update_unix": 1762732801,
+  "time_last_update_utc": "Mon, 10 Nov 2025 00:00:01 +0000",
+  "time_next_update_unix": 1762819201,
+  "time_next_update_utc": "Tue, 11 Nov 2025 00:00:01 +0000",
+  "base_code": "USD",
+  "target_code": "ARS",
+  "conversion_rate": 1441.5
+}

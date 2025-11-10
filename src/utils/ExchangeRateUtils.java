@@ -188,24 +188,19 @@ public class ExchangeRateUtils {
      */
     public static void mostrarCodigosConBanderas(SupportedCodesResponse response) {
 
-        // Mensaje informativo inicial
         System.out.print("| ");
         System.out.println(ConsoleUtils.format("ℹ️ Obteniendo códigos de monedas...", ConsoleUtils.BLUE, ConsoleUtils.BOLD, ""));
         System.out.println("| Códigos soportados:");
         System.out.println("|----------------------------------------------------------------|");
         System.out.println("| Flag CODE - Country");
 
-        // Obtener la lista de códigos de monedas de la respuesta
         List<List<String>> codes = response.supported_codes();
 
-        // Recorrer cada par <código, nombre de moneda>
         for (List<String> codePair : codes) {
-            String code = codePair.get(0);   // código de la moneda
-            String name = codePair.get(1);   // nombre del país/moneda
+            String code = codePair.get(0);
+            String name = codePair.get(1);
             String bandera = FLAGS.getOrDefault(code, "🏳️");
-            // Si no tenemos bandera para esa moneda, mostramos una bandera blanca como placeholder
 
-            // Imprimir cada moneda con su bandera y nombre
             System.out.printf("| %s %s - %s%n", bandera, code, name);
         }
     }
